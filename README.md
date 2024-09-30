@@ -28,3 +28,6 @@ Este é um projeto pessoal de estudos, que consiste em uma aplicação para uma 
   - HTML/CSS
   - Bootstrap
 
+- **Banco de dados**:
+  - PostgreSQL
+
