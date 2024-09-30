@@ -1,0 +1,29 @@
+<app-trainer-navbar></app-trainer-navbar>
+<div *ngIf="trains && trains.length > 0" class="container mt-4">
+  <div *ngFor="let train of trains" class="train-item mb-4 pt-5">
+    <div class="card card-custom shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title">{{ train.trainName }}</h4>
+        <!-- Exercícios -->
+        <ul class="list-group list-group-flush mb-3">
+          <li class="list-group-item" *ngFor="let i of getExerciseNumbers()">
+            <ng-container *ngIf="train['exercise' + i]">
+              <strong>Exercício {{ i }}:</strong> {{ train["exercise" + i] }}
+            </ng-container>
+          </li>
+        </ul>
+
+        <button
+          class="btn btn-primary me-2"
+          (click)="extendTrain(train.trainId)"
+        >
+          Estender
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="trains?.length === 0" class="alert alert-info mt-5 pt-5">
+  <p>Nenhum treino encontrado.</p>
+</div>

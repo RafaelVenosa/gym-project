@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  padding-top: 70px;
+}
+
+.content {
+  flex: 1; // Alterado para ocupar o restante do espaço disponível
+  display: flex;
+  flex-direction: column;
+}
+
+.title-area {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.register-area {
+  width: 100%;
+  flex: 1; // Alterado para ocupar o restante do espaço disponível
+  display: flex;
+  justify-content: center;
+}
+
+.register-form {
+  width: 90%; // Ajuste a largura conforme necessário
+  display: flex;
+}
+
+.register-row {
+  display: flex;
+  flex-direction: column; // Alinhar os campos em colunas
+  width: 100%;
+  align-items: center;
+}
+
+.register-input {
+  margin: 10px 0;
+  width: 40%;
+}
+
+.send-button {
+  margin: 10px 0;
+  width: 40%;
+}

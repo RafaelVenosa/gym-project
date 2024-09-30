@@ -1,0 +1,76 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container d-flex flex-column min-vh-100">
+  <div class="flex-grow-1">
+    <h2>Buscar Clientes</h2>
+
+    <form (ngSubmit)="onSearch()">
+      <div class="search-container">
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            [(ngModel)]="searchParams.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cpf">CPF:</label>
+          <input
+            type="text"
+            id="cpf"
+            class="form-control"
+            [(ngModel)]="searchParams.cpf"
+            name="cpf"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Buscar</button>
+      </div>
+    </form>
+
+    <div *ngIf="users?.length">
+      <h3>Resultados da Busca:</h3>
+      <ul class="list-group">
+        <li
+          *ngFor="let user of users"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h5>{{ user.username }}</h5>
+            <p><strong>CPF:</strong> {{ user.cpf }}</p>
+            <p><strong>Status:</strong> {{ user.userStatus }}</p>
+          </div>
+          <div class="btn-group">
+            <button
+              *ngIf="user.userStatus === 'BLOCKED'"
+              class="btn btn-success"
+              (click)="activateUserYear(user.userId)"
+            >
+              Ativação anual
+            </button>
+            <button
+              *ngIf="user.userStatus === 'BLOCKED'"
+              class="btn btn-success"
+              (click)="activateUserMounth(user.userId)"
+            >
+              Ativação mensal
+            </button>
+            <button
+              class="btn btn-warning"
+              (click)="deactivateUser(user.userId)"
+            >
+              Desativar
+            </button>
+            <button class="btn btn-danger" (click)="deleteUser(user.userId)">
+              Deletar
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="!users?.length">
+      <p>Nenhum cliente encontrado.</p>
+    </div>
+  </div>
+</div>

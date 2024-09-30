@@ -1,0 +1,129 @@
+<app-trainer-navbar></app-trainer-navbar>
+<div *ngIf="trains && trains.length > 0" class="container mt-4">
+  <div *ngFor="let train of trains" class="train-item mb-4 pt-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <!-- Modo de visualização -->
+        <h4 class="card-title">{{ train.trainName }}</h4>
+
+        <!-- Exercícios - Exibe apenas os não nulos -->
+        <ul class="list-group list-group-flush mb-3">
+          <li class="list-group-item" *ngFor="let i of getExerciseNumbers()">
+            <ng-container *ngIf="train['exercise' + i]">
+              <strong>Exercício {{ i }}:</strong> {{ train["exercise" + i] }}
+            </ng-container>
+          </li>
+        </ul>
+
+        <!-- Botão para listar usuários afiliados -->
+        <button
+          class="btn btn-info me-2"
+          (click)="toggleUsers(train)"
+          [disabled]="editingTrain === train"
+        >
+          {{ train.showUsers ? "Ocultar Usuários" : "Ver Usuários Afiliados" }}
+        </button>
+
+        <!-- Lista de usuários afiliados -->
+        <ul *ngIf="train.showUsers && (affiliatedUsersMap[train.trainId]?.length ?? 0) > 0">
+          <li *ngFor="let user of affiliatedUsersMap[train.trainId]">
+            {{ user.username }}
+          </li>
+        </ul>
+
+        <!-- Botão de editar treino -->
+        <button
+          class="btn btn-primary me-2"
+          (click)="editTrain(train)"
+          [disabled]="train.showUsers"
+        >
+          Editar
+        </button>
+
+        <button class="btn btn-warning" (click)="deactivateTrain(train.trainId)">
+          Desativar
+        </button>
+
+        <button class="btn btn-danger m-2" (click)="deleteTrain(train.trainId)">
+          Excluir
+        </button>
+
+        <button class="btn btn-success" (click)="extendTrain(train.trainId)">
+          Estender
+        </button>
+
+        <!-- Formulário de edição -->
+        <div *ngIf="editingTrain === train" class="mt-3">
+          <div class="card">
+            <div class="card-body">
+              <input
+                [(ngModel)]="editingTrain.trainName"
+                class="form-control mb-2"
+                placeholder="Nome do treino"
+              />
+              <div *ngFor="let i of getExerciseNumbers()">
+                <input
+                  [(ngModel)]="editingTrain['exercise' + i]"
+                  class="form-control mb-2"
+                  placeholder="Exercício {{ i }}"
+                />
+              </div>
+              <button
+                class="btn btn-success me-2"
+                (click)="saveTrain(train.trainId)"
+              >
+                Salvar
+              </button>
+              <button class="btn btn-secondary" (click)="cancelEdit()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <input
+            type="text"
+            id="name"
+            class="form-control mb-2"
+            [(ngModel)]="searchParams.username"
+            placeholder="Buscar usuário para afiliar"
+            name="name"
+          />
+          <button
+            type="submit"
+            class="btn btn-info"
+            (click)="onSearch()"
+          >
+            Buscar Usuário
+          </button>
+
+          <div *ngIf="users?.length">
+            <h3>Resultados da Busca:</h3>
+            <ul class="list-group">
+              <li
+                *ngFor="let user of users"
+                class="list-group-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h5>{{ user.username }}</h5>
+                  <p><strong>Status:</strong> {{ user.userStatus }}</p>
+                </div>
+                <button
+                  class="btn btn-success"
+                  (click)="registerUserInTrain(user.userId, train.trainId)"
+                >
+                  Associar a este treino
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="trains?.length === 0" class="alert alert-info mt-4 pt-5">
+  <p>Nenhum treino encontrado.</p>
+</div>

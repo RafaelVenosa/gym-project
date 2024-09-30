@@ -1,0 +1,72 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container">
+  <div class="content">
+    <div class="title-area">
+      <h1 class="title">Registro de treinador</h1>
+    </div>
+    <div class="register-area">
+      <form class="register-form" (ngSubmit)="enviarDados()">
+        <div class="register-row">
+          <mat-form-field class="register-input">
+            <mat-label>Nome completo</mat-label>
+            <input
+              matInput
+              placeholder="Ex. Douglas Silva Fernandes"
+              required
+              [(ngModel)]="data.username"
+              name="username"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="register-input">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Ex. douglas@gmail.com"
+              required
+              [(ngModel)]="data.email"
+              name="email"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="register-input">
+            <mat-label>Telefone</mat-label>
+            <input
+              matInput
+              placeholder="Ex. 11 999999999"
+              required
+              [(ngModel)]="data.phoneNumber"
+              name="phoneNumber"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="register-input">
+            <mat-label>Cpf</mat-label>
+            <input
+              matInput
+              placeholder="Ex. 12312312312"
+              required
+              [(ngModel)]="data.cpf"
+              name="cpf"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="register-input">
+            <mat-label>Imagem do usuário</mat-label>
+            <input
+              matInput
+              placeholder="Insira o link da imagem"
+              required
+              [(ngModel)]="data.userImage"
+              name="userImage"
+            />
+          </mat-form-field>
+
+          <button mat-raised-button class="send-button" type="submit">
+            Enviar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

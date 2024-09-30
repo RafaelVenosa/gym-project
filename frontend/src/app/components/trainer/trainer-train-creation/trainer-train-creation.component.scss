@@ -1,0 +1,23 @@
+.container-fluid {
+    max-height: calc(100vh - 200px); /* Ajuste conforme necessário */
+    overflow-y: auto;
+    padding-top: 100px;
+  }
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-aligner {
+    display: flex;
+    flex-direction: row;
+}

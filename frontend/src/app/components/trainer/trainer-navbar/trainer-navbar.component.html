@@ -1,0 +1,74 @@
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Menu treinador</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasDarkNavbar"
+      aria-controls="offcanvasDarkNavbar"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="offcanvas offcanvas-end text-bg-dark"
+      tabindex="-1"
+      id="offcanvasDarkNavbar"
+      aria-labelledby="offcanvasDarkNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+          Menu treinador
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item dropdown"></li>
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Minha conta
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li>
+              <a class="dropdown-item" href="/trainer/password-change"
+                >Alteração de senha</a
+              >
+            </li>
+          </ul>
+          <li class="nav-item">
+            <a class="nav-link active" href="/trainer/train-creation">Criação de treino</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/trainer/train-control">Todos os meus treinos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/trainer/customer-control">Buscar por um aluno</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/trainer/expiring-train">Treinos expirando</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/trainer/expired-train">Treinos expirados</a>
+          </li>
+        </ul>
+        <div class="d-flex mt-3" role="search">
+          <button class="btn btn-danger" (click)="logout()">
+            Sair
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

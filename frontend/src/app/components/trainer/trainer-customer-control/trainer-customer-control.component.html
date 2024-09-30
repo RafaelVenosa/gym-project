@@ -1,0 +1,80 @@
+<app-trainer-navbar></app-trainer-navbar>
+
+<div class="container mt-4 pt-5">
+  <div class="customer-search">
+    <h2>Busque por um aluno</h2>
+    <form (ngSubmit)="onSearch()">
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          [(ngModel)]="searchParams.name"
+          name="name"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mt-2">Buscar</button>
+    </form>
+
+    <div *ngIf="users?.length">
+      <h3>Resultados da Busca:</h3>
+      <ul class="list-group">
+        <li
+          *ngFor="let user of users"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <h5>{{ user.username }}</h5>
+            <p><strong>Status:</strong> {{ user.userStatus }}</p>
+          </div>
+          <button
+            *ngIf="user.userStatus === 'ACTIVE'"
+            class="btn btn-info"
+            (click)="seeCustomerTrains(user.userId)"
+          >
+            Treinos cadastrados
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="!users?.length">
+      <p class="mt-2">Nenhum cliente encontrado.</p>
+    </div>
+  </div>
+
+  <div *ngIf="trains?.length">
+    <h3>Treinos:</h3>
+    <ul class="list-group">
+      <li
+        *ngFor="let train of trains"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <div>
+          <h5>{{ train.trainName }}</h5>
+          <h5>{{ train.trainCreator }}</h5>
+          <p><strong>Status:</strong> {{ train.trainStatus }}</p>
+        </div>
+        <button
+          *ngIf="train.trainStatus === 'ACTIVE'"
+          class="btn btn-warning"
+          (click)="deactivateTrain(train.trainId)"
+        >
+          Desativar treino
+        </button>
+        <button
+          class="btn btn-danger"
+          (click)="deleteTrain(train.trainId)"
+        >
+          Remover treino
+        </button>
+        <button
+          class="btn btn-success"
+          (click)="extendTrain(train.trainId)"
+        >
+          Extender treino
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

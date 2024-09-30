@@ -1,0 +1,53 @@
+# Geral
+HELP.md
+
+# Ignorar as pastas de build de todos os microserviços
+**/target/
+**/build/
+
+# Permitir que os wrappers de Maven e Gradle sejam incluídos
+!.mvn/wrapper/maven-wrapper.jar
+
+# Exceções para incluir diretórios de build dentro do src (caso seja necessário)
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### Spring Tools Suite (STS) ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+# Logs
+*.log
+/logs/
+
+# Geral do Maven e Gradle
+*.jar
+*.war
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+

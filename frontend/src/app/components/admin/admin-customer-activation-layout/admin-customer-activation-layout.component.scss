@@ -1,0 +1,39 @@
+.container {
+  margin-top: 20px;
+  max-width: 900px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+
+
+
+.btn-block {
+  width: 100%;
+}
+
+.list-group-item {
+  margin-bottom: 10px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 5px;
+}
+
+/* Ajuste de altura mínima para conteúdo */
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  text-align: center;
+}

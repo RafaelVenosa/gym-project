@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: gym-exercises-service
+  config:
+    import: 'configserver:'
+  cloud:
+    config:
+      discovery:
+        service-id: gym-config-server
+
+

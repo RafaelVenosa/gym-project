@@ -1,0 +1,18 @@
+<app-trainer-navbar></app-trainer-navbar>
+<div class="container-fluid" style="margin-bottom: 100px;">
+  <h2 class="title">Criação de Treino</h2>
+  <form class="form-container1">
+    <div class="mb-3 w-50">
+      <label for="nomeTreino" class="form-label">Nome do Treino</label>
+      <input type="text" class="form-control" id="nomeTreino" [(ngModel)]="trainName" name="nomeTreino" required>
+    </div>
+    <div *ngFor="let exercicio of exercises; let i = index; trackBy: trackByIndex" class="mb-3 w-50">
+      <label for="exercicio{{i+1}}" class="form-label">Exercício {{i+1}}</label>
+      <input type="text" class="form-control" id="exercicio{{i+1}}" [(ngModel)]="exercises[i].valor" name="exercicio{{i+1}}">
+    </div>
+    <div class="buttons-aligner">
+      <button type="button" class="btn btn-outline-primary" (click)="adicionarExercicio()" [disabled]="exercises.length >= 20">Adicionar Exercício</button>
+      <button type="button" class="btn btn-outline-dark ms-1" (click)="onSubmit()">Salvar treino</button>
+    </div>
+  </form>
+</div>
