@@ -1,6 +1,7 @@
 # Gym App
 
 Este é um projeto pessoal de estudos, que consiste em uma aplicação para uma academia. O backend foi desenvolvido em Java, utilizando o framework Spring, e segue a arquitetura de microserviços. O frontend foi construído com Angular.
+Vídeo demonstrativo do sistema em funcionamento: https://www.youtube.com/watch?v=-nyiMFHLrnI
 
 ## Funcionalidades
 
